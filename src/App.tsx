@@ -1,27 +1,40 @@
-import React from "react";
-import { Box, Text, Link, VStack, Code, Grid } from "@chakra-ui/react";
+import React, { useState } from "react";
+import {
+  Box,
+  Text,
+  Link,
+  VStack,
+  Code,
+  Grid,
+  Heading,
+  Center,
+  Button,
+  Container,
+} from "@chakra-ui/react";
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
-import { Logo } from "./Logo";
 
-export const App = () => (
-  <Box textAlign="center" fontSize="xl">
-    <Grid minH="100vh" p={3}>
+export const App = () => {
+  const [started, setStarted] = useState(false);
+
+  return (
+    <Grid textAlign="center" minH="100vh" p="3">
       <ColorModeSwitcher justifySelf="flex-end" />
-      <VStack spacing={8}>
-        <Logo h="40vmin" pointerEvents="none" />
-        <Text>
-          Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
+      <VStack mx="10" spacing="5">
+        <Heading fontWeight="bold" size="2xl">
+          Shuffle and Practice!
+        </Heading>
+        <Text fontSize="md">
+          Write a list of words or topics, shuffle them and practice!
         </Text>
-        <Link
-          color="teal.500"
-          href="https://chakra-ui.com"
-          fontSize="2xl"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Button
+          variant="solid"
+          colorScheme="purple"
+          px="10"
+          onClick={() => setStarted(true)}
         >
-          Learn Chakra
-        </Link>
+          Start
+        </Button>
       </VStack>
     </Grid>
-  </Box>
-);
+  );
+};
