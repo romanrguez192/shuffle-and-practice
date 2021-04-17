@@ -30,6 +30,7 @@ const WordsInput = ({ addWord }: Props) => {
     }
 
     addWord(word.trim());
+    setWord("");
   };
 
   const handleChangeText = (e: ChangeEvent<HTMLInputElement>) => {
@@ -44,8 +45,10 @@ const WordsInput = ({ addWord }: Props) => {
       <form onSubmit={handleSubmit}>
         <HStack maxW="md">
           <Input
+            autoFocus
             variant="filled"
             placeholder="Write a word or a topic"
+            value={word}
             onChange={handleChangeText}
           />
           <Button colorScheme="purple" px="10" type="submit">

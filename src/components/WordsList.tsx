@@ -7,6 +7,7 @@ import {
   Spacer,
   IconButton,
   StackDivider,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { FaTrash } from "react-icons/fa";
 import { Word } from "../App";
@@ -17,6 +18,8 @@ interface Props {
 }
 
 const WordsList = ({ words, deleteWord }: Props) => {
+  const color = useColorModeValue("purple.500", "purple.200");
+
   if (!words.length) {
     return (
       <Box>
@@ -30,7 +33,7 @@ const WordsList = ({ words, deleteWord }: Props) => {
       divider={<StackDivider />}
       borderWidth="2px"
       borderRadius="md"
-      borderColor="gray.400"
+      borderColor={color}
       p="5"
       w="100%"
       maxW="xl"
@@ -42,6 +45,7 @@ const WordsList = ({ words, deleteWord }: Props) => {
           <Spacer />
           <IconButton
             icon={<FaTrash />}
+            color={color}
             aria-label="Delete"
             onClick={() => deleteWord(word.id)}
           />

@@ -32,9 +32,28 @@ export const App = () => {
     setWords(newWords);
   };
 
-  const handlePracticeClick = () => {
+  const shuffle = () => {
+    const newWords = [...words];
+
+    for (let i = 0; i < newWords.length; i++) {
+      let j = Math.floor(Math.random() * newWords.length);
+      let aux = newWords[i];
+      newWords[i] = newWords[j];
+      newWords[j] = aux;
+    }
+
+    setWords(newWords);
+  };
+
+  const handleShuffleClick = () => {
+    shuffle();
     setStarted(false);
     setPractice(true);
+  };
+
+  const finish = () => {
+    setWords([]);
+    setPractice(false);
   };
 
   return (
@@ -49,14 +68,14 @@ export const App = () => {
             variant="solid"
             colorScheme="purple"
             px="10"
-            onClick={handlePracticeClick}
+            onClick={handleShuffleClick}
           >
-            Practice
+            Shuffle
           </Button>
         </VStack>
       </Fade>
       <Fade in={practice} unmountOnExit>
-        <Practice words={words} />
+        <Practice words={words} finish={finish} />
       </Fade>
       {!started && !practice && <Start start={() => setStarted(true)} />}
     </Box>
