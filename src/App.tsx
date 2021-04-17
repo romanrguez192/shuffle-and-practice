@@ -10,31 +10,35 @@ import {
   Center,
   Button,
   Container,
+  Fade,
 } from "@chakra-ui/react";
-import { ColorModeSwitcher } from "./ColorModeSwitcher";
+import ColorModeSwitcher from "./components/ColorModeSwitcher";
+import Start from "./components/Start";
+import WordsInput from "./components/WordsInput";
+import WordsList from "./components/WordsList";
+
+export interface Word {
+  id: string;
+  content: string;
+}
 
 export const App = () => {
   const [started, setStarted] = useState(false);
+  const [words, setWords] = useState<Word[]>([]);
 
   return (
-    <Grid textAlign="center" minH="100vh" p="3">
-      <ColorModeSwitcher justifySelf="flex-end" />
-      <VStack mx="10" spacing="5">
-        <Heading fontWeight="bold" size="2xl">
-          Shuffle and Practice!
-        </Heading>
-        <Text fontSize="md">
-          Write a list of words or topics, shuffle them and practice!
-        </Text>
-        <Button
-          variant="solid"
-          colorScheme="purple"
-          px="10"
-          onClick={() => setStarted(true)}
-        >
-          Start
-        </Button>
-      </VStack>
-    </Grid>
+    <Box>
+      <ColorModeSwitcher />
+      <Fade in={started} unmountOnExit>
+        <VStack p="6" spacing="6">
+          <WordsInput />
+          <WordsList words={words} />
+          <Button isDisabled={!words.length} variant="solid" colorScheme="purple" px="10">
+            Practice
+          </Button>
+        </VStack>
+      </Fade>
+      {!started && <Start start={() => setStarted(true)} />}
+    </Box>
   );
 };
