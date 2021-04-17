@@ -12,6 +12,7 @@ import {
   Container,
   Fade,
 } from "@chakra-ui/react";
+import { v4 as uuidv4 } from 'uuid';
 import ColorModeSwitcher from "./components/ColorModeSwitcher";
 import Start from "./components/Start";
 import WordsInput from "./components/WordsInput";
@@ -28,7 +29,7 @@ export const App = () => {
 
   const addWord = (word: string) => {
     const newWord = {
-      id: word + "A",
+      id: uuidv4(),
       content: word,
     };
 
