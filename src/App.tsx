@@ -26,14 +26,28 @@ export const App = () => {
   const [started, setStarted] = useState(false);
   const [words, setWords] = useState<Word[]>([]);
 
+  const addWord = (word: string) => {
+    const newWord = {
+      id: word + "A",
+      content: word,
+    };
+
+    setWords([...words, newWord]);
+  };
+
   return (
     <Box>
       <ColorModeSwitcher />
       <Fade in={started} unmountOnExit>
         <VStack p="6" spacing="6">
-          <WordsInput />
+          <WordsInput addWord={addWord} />
           <WordsList words={words} />
-          <Button isDisabled={!words.length} variant="solid" colorScheme="purple" px="10">
+          <Button
+            isDisabled={!words.length}
+            variant="solid"
+            colorScheme="purple"
+            px="10"
+          >
             Practice
           </Button>
         </VStack>

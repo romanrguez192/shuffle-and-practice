@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import {
   Box,
   Text,
@@ -14,29 +14,45 @@ import {
   FormControl,
   Input,
 } from "@chakra-ui/react";
-import { Word } from "../App";
 
 interface Props {
-  addWord: (word : Word) => void;
+  addWord: (word: string) => void;
 }
 
-const WordsInput = () => {
+const WordsInput = ({ addWord }: Props) => {
+  const [word, setWord] = useState("");
 
-  const [word, setWord] = useState();
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (word.trim() === "") {
+      return;
+    }
+
+    addWord(word.trim());
+  };
+
+  const handleChangeText = (e: ChangeEvent<HTMLInputElement>) => {
+    setWord(e.target.value);
+  };
 
   return (
     <VStack textAlign="center" spacing="6">
       <Heading mt="45" fontWeight="bold" size="xl">
         Shuffle and Practice!
       </Heading>
-      <FormControl maxW="md">
-        <HStack>
-          <Input variant="filled" placeholder="Write a word or a topic" />
-          <Button colorScheme="purple" px="10">
+      <form onSubmit={handleSubmit}>
+        <HStack maxW="md">
+          <Input
+            variant="filled"
+            placeholder="Write a word or a topic"
+            onChange={handleChangeText}
+          />
+          <Button colorScheme="purple" px="10" type="submit">
             Add
           </Button>
         </HStack>
-      </FormControl>
+      </form>
     </VStack>
   );
 };
