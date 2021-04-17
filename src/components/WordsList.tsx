@@ -21,14 +21,16 @@ import { Word } from "../App";
 
 interface Props {
   words: Word[];
+  deleteWord: (id: string) => void;
 }
 
-const WordsList = ({ words }: Props) => {
-
+const WordsList = ({ words, deleteWord }: Props) => {
   if (!words.length) {
-    return (<Box>
-      <Text>No hay nah</Text>
-    </Box>)
+    return (
+      <Box>
+        <Text>Add some words or topics to practice!</Text>
+      </Box>
+    );
   }
 
   return (
@@ -46,7 +48,11 @@ const WordsList = ({ words }: Props) => {
         <HStack key={word.id}>
           <Text>{word.content}</Text>
           <Spacer />
-          <IconButton icon={<FaTrash />} aria-label="Delete" />
+          <IconButton
+            icon={<FaTrash />}
+            aria-label="Delete"
+            onClick={() => deleteWord(word.id)}
+          />
         </HStack>
       ))}
     </VStack>

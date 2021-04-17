@@ -13,6 +13,7 @@ import {
   HStack,
   FormControl,
   Input,
+  useToast,
 } from "@chakra-ui/react";
 
 interface Props {
@@ -21,11 +22,18 @@ interface Props {
 
 const WordsInput = ({ addWord }: Props) => {
   const [word, setWord] = useState("");
+  const toast = useToast();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (word.trim() === "") {
+      toast({
+        title: "Please write a word or a topic",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
       return;
     }
 

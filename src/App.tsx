@@ -35,13 +35,19 @@ export const App = () => {
     setWords([...words, newWord]);
   };
 
+  const deleteWord = (id: string) => {
+    const newWords = words.filter((word) => word.id !== id);
+
+    setWords(newWords);
+  };
+
   return (
     <Box>
       <ColorModeSwitcher />
       <Fade in={started} unmountOnExit>
         <VStack p="6" spacing="6">
           <WordsInput addWord={addWord} />
-          <WordsList words={words} />
+          <WordsList words={words} deleteWord={deleteWord} />
           <Button
             isDisabled={!words.length}
             variant="solid"
