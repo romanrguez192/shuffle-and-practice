@@ -1,22 +1,11 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  Heading,
-  Center,
-  Button,
-  Container,
-  Fade,
-} from "@chakra-ui/react";
-import { v4 as uuidv4 } from 'uuid';
+import { Box, VStack, Button, Fade } from "@chakra-ui/react";
+import { v4 as uuidv4 } from "uuid";
 import ColorModeSwitcher from "./components/ColorModeSwitcher";
 import Start from "./components/Start";
 import WordsInput from "./components/WordsInput";
 import WordsList from "./components/WordsList";
+import Practice from "./components/Practice";
 
 export interface Word {
   id: string;
@@ -25,10 +14,11 @@ export interface Word {
 
 export const App = () => {
   const [started, setStarted] = useState(false);
+  const [practice, setPractice] = useState(false);
   const [words, setWords] = useState<Word[]>([]);
 
   const addWord = (word: string) => {
-    const newWord = {
+    const newWord: Word = {
       id: uuidv4(),
       content: word,
     };
@@ -37,9 +27,14 @@ export const App = () => {
   };
 
   const deleteWord = (id: string) => {
-    const newWords = words.filter((word) => word.id !== id);
+    const newWords: Word[] = words.filter((word) => word.id !== id);
 
     setWords(newWords);
+  };
+
+  const handlePracticeClick = () => {
+    setStarted(false);
+    setPractice(true);
   };
 
   return (
@@ -54,12 +49,16 @@ export const App = () => {
             variant="solid"
             colorScheme="purple"
             px="10"
+            onClick={handlePracticeClick}
           >
             Practice
           </Button>
         </VStack>
       </Fade>
-      {!started && <Start start={() => setStarted(true)} />}
+      <Fade in={practice} unmountOnExit>
+        <Practice words={words} />
+      </Fade>
+      {!started && !practice && <Start start={() => setStarted(true)} />}
     </Box>
   );
 };
