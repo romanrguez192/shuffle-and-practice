@@ -1,17 +1,9 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import {
-  Box,
-  Text,
-  Link,
   VStack,
-  Code,
-  Grid,
   Heading,
-  Center,
   Button,
-  Container,
   HStack,
-  FormControl,
   Input,
   useToast,
 } from "@chakra-ui/react";

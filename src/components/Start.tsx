@@ -1,15 +1,10 @@
 import React from "react";
 import {
-  Box,
   Text,
-  Link,
   VStack,
-  Code,
-  Grid,
   Heading,
   Center,
   Button,
-  Container,
 } from "@chakra-ui/react";
 
 interface Props {

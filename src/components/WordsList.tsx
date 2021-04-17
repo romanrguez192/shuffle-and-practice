@@ -2,19 +2,11 @@ import React from "react";
 import {
   Box,
   Text,
-  Link,
   VStack,
-  Code,
-  Grid,
-  Heading,
-  Center,
-  Button,
-  Container,
   HStack,
   Spacer,
   IconButton,
   StackDivider,
-  Flex,
 } from "@chakra-ui/react";
 import { FaTrash } from "react-icons/fa";
 import { Word } from "../App";
