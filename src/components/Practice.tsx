@@ -10,7 +10,6 @@ import {
 import {
   FaArrowLeft,
   FaArrowRight,
-  FaCheck,
   FaCheckCircle,
 } from "react-icons/fa";
 import { Word } from "../App";

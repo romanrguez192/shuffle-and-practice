@@ -10,6 +10,7 @@ const ColorModeSwitcher = () => {
   return (
     <IconButton
       position="absolute"
+      zIndex="3"
       top="3"
       right="3"
       size="md"
