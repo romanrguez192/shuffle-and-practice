@@ -12,14 +12,18 @@ import {
 import { FaTrash } from "react-icons/fa";
 import { Word } from "../App";
 
+// Props del componente
 interface Props {
   words: Word[];
   deleteWord: (id: string) => void;
 }
 
+// Lista de palabras o temas agregados
 const WordsList = ({ words, deleteWord }: Props) => {
+  // Color dependiendo del tema
   const color = useColorModeValue("purple.500", "purple.200");
 
+  // Si aún no se agregan palabras o temas
   if (!words.length) {
     return (
       <Box>

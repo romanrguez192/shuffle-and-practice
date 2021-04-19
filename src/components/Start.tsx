@@ -1,16 +1,12 @@
 import React from "react";
-import {
-  Text,
-  VStack,
-  Heading,
-  Center,
-  Button,
-} from "@chakra-ui/react";
+import { Text, VStack, Heading, Center, Button } from "@chakra-ui/react";
 
+// Props del componente
 interface Props {
   start: () => void;
 }
 
+// Pantalla de inicio de la app
 const Start = ({ start }: Props) => {
   return (
     <Center minH="100vh">

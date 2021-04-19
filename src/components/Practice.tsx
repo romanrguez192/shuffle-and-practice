@@ -7,18 +7,16 @@ import {
   IconButton,
   Spacer,
 } from "@chakra-ui/react";
-import {
-  FaArrowLeft,
-  FaArrowRight,
-  FaCheckCircle,
-} from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaCheckCircle } from "react-icons/fa";
 import { Word } from "../App";
 
+// Props del componente
 interface Props {
   words: Word[];
   finish: () => void;
 }
 
+// Componente para practicar las palabras o temas
 const Practice = ({ words, finish }: Props) => {
   const [currentWord, setCurrentWord] = useState(0);
 
