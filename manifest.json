@@ -1,0 +1,15 @@
+{
+  "short_name": "Shuffle and Practice",
+  "name": "Shuffle and Practice",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "512x512 192x192 64x64 32x32 24x24 16x16",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#805AD5",
+  "background_color": "#ffffff"
+}
